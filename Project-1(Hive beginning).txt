@@ -1,0 +1,75 @@
+
+========Priject one========
+Create a dir data
+mkdir data
+cd data
+
+=============
+vi txnsd.txt
+00000002,06-01-2011,Exercise & Fitness
+00000003,06-05-2011,Gymnastics
+00000012,02-08-2011,Indoor Games
+00000014,02-25-2011,Gymnastics
+00000022,10-10-2011,Water Sports
+00000023,05-02-2011,Gymnastics
+
+=============
+Go to hive
+=============
+
+Create database catdb; 
+Use catdb;
+
+create table txntab(txnno int, txndate string,category string) row format delimited fields terminated by ',';
+load data local inpath '/home/cloudera/data/txnsd.txt' into table txntab;
+select * from txntab;
+
+
+=============
+Edge Node
+=============
+
+hadoop fs -ls /user/hive/warehouse/
+hadoop fs -ls /user/hive/warehouse/catdb.db
+hadoop fs -ls /user/hive/warehouse/catdb.db/txntab
+
+
+Assignment:
+Task 1 
+========
+Have txnsd.txt in /home/cloudera/data/
+Go to hive shell
+========
+
+create database newdb; 
+use newdb;
+create table txntab(txnno int, txndate string,category string) row format delimited fields terminated by ',';
+
+load data local inpath '/home/cloudera/data/txnsd.txt' into table txntab;
+select * from txntab;
+
+========
+create another in hive and insert only gymnastics data
+========
+create table txntab_target(txnno int, txndate string,category string) row format delimited fields terminated by ',';
+
+insert into txntab_target select * from txntab where category='Gymnastics';
+
+select * from txntab_target;
+
+===============
+Task 2 
+===================
+
+Put the data txnsd.txt to hdfs after creating directory hdata
+
+hadoop fs -mkdir /user/cloudera/hdata
+hadoop fs -put /home/cloudera/data/txnsd.txt /user/cloudera/hdata
+
+========
+Go to Hive shell
+========
+
+Create a table again --- 
+
+create table txntab_h(txnno int, txndate string,category string) row format delimited fields terminated by ',';
