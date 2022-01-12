@@ -34,3 +34,15 @@ LINES TERMINATED BY '\n'
 
 STORED AS textfile
 LOCATION '/user/<>/<directory>';
+  
+# Describe Hive table attributes
+### ROW FORMAT:
+## It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
+
+### TBLPROPERTIES:
+## The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs.
+## Example: Ignoring 'n' number of lines of header or footer from file to be loaded
+
+### STORED AS:
+## It specifys the format of the data file. 
+## The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
