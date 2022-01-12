@@ -44,15 +44,15 @@ LOCATION '/user/<>/<directory>';
   ## Example: Ignoring 'n' number of lines of header or footer from file to be loaded
 
 ### STORED AS:
-  ## It specifys the format of the data file. 
-  ## The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
+## It specifys the format of the data file. 
+## The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
 
 ### Partition By:
-  ## This clasue is used to partition the data into multiple files 
-  ## It is good in terms of performance tunning
-  ## Table data is divided into multiple parts based on the low cardinality column to increase the performance of the hive
+## This clasue is used to partition the data into multiple files 
+## It is good in terms of performance tunning
+## Table data is divided into multiple parts based on the low cardinality column to increase the performance of the hive
 
 ### Clustered by:
-  ## Bucketing is a concept to clasify the data into more manageable parts to increase the performance of the hive
-  ## Table data is classified into n number of buckets using hash function
+## Bucketing is a concept to clasify the data into more manageable parts to increase the performance of the hive
+## Table data is classified into n number of buckets using hash function
   
