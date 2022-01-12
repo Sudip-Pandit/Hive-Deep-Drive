@@ -35,24 +35,24 @@ LINES TERMINATED BY '\n'
 STORED AS textfile
 LOCATION '/user/<>/<directory>';
   
-# Describe Hive table attributes
-### ROW FORMAT:
-  ## It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
+# How to describe the hive table attributes?
+# ROW FORMAT:
+###### It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
 
-### TBLPROPERTIES:
+# TBLPROPERTIES:
 ###### The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs.
 ###### Example: Ignoring 'n' number of lines of header or footer from file to be loaded
 
-### STORED AS:
-######It specifys the format of the data file. 
-######The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
+# STORED AS:
+###### It specifys the format of the data file. 
+###### The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
 
-### Partition By:
+# Partition By:
 ###### This clasue is used to partition the data into multiple files 
 ###### It is good in terms of performance tunning
 ###### Table data is divided into multiple parts based on the low cardinality column to increase the performance of the hive
 
-### Clustered by:
+# Clustered by:
 ###### Bucketing is a concept to clasify the data into more manageable parts to increase the performance of the hive
 ###### Table data is classified into n number of buckets using hash function
   
