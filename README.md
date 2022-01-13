@@ -111,6 +111,16 @@ Create table employees
     load data local inpath '/home/cloudera/employee.txt') overwrite into table employees;
     INSERT OVERWRITE TABLE employees PARTITION(department_id) SELECT
     employee_id, hire_date, department_id;
+    
+ # Bucketing 
+ 
+      Partitioning is good in case of low cardinality column 
+      But if the data is not possible to partition because of high cardinality like emp_id in such case we need to apply bucketing 
+      If we apply partitioning in column containing unique values, then it creates extra overhead to add partition
+      If the data is in millions and billions then creating millions/billions of directory for each unique value will impact the performance
+      So, bucketing is effective in such scenario
+      Hive uses hash function the clustered column and data is stored on the buckets as specified by the user while creating buckets
+      ===>>> Hash_function(bucket_column) Mod (no of buckets)
 
 
   
