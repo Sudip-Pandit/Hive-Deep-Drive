@@ -58,14 +58,38 @@ LOCATION '/user/<>/<directory>';
 ###### It is a good way of dividing a table into parts based on the value of the partitioned attribute of the column.
 ###### Each partition can have its own columns, serDe and storage info
 ###### Partition determine how the data is stored in a manageable way to increase the ###### performance of the hive
+###### Hive creates directorty for each value of partitioned column
+###### Each partitioned directory stores data containing only partitioned value as specified by directory/folder name
+###### Hive creates seperate directory for each value of partitioned column
 
 # Clustered by:
-###### Bucketing is a concept to clasify the data into more manageable parts to ###### increase the performance of the hive.
+###### Bucketing is a concept to clasify the data into more manageable parts to increase the performance of the hive.
 ###### Table data is classified into n number of buckets using hash function.
 ###### Bucketing is based on the value of the hash function of the particular column ###### of a table.
 ###### Bucketing is very seful for sampling and join optimization
 ###### Hash partition within ranges
 ###### For sub-sampling within a partition
 ###### It can speed up queries that involve sampling the data (Without bucketing hive ###### scans entire datasets)
+###### Hive creates files for each value of bucket
+  
+# Command regarding partitioned column
+
+Create table hiveFirstPartitionedTable
+(  
+             employee)id INT,
+  
+             hire_date STRING,
+  
+             department_id INT
+)
+PARTITIONED BY (department_id INT)
+  
+Row format delimited 
+  
+fields terminated by  ','
+  
+Stored as textfile;
+
+
   
   
