@@ -74,14 +74,14 @@ LOCATION '/user/<>/<directory>';
   
 # Command regarding partitioned column
 
-Create table hiveFirstPartitionedTable
-(  
-             employee)id INT,
+Create table employees
+            
+     (employee)id INT,
   
-             hire_date STRING,
+     hire_date STRING,
   
-             department_id INT
-)
+     department_id INT)
+  
 PARTITIONED BY (department_id INT)
   
 Row format delimited 
