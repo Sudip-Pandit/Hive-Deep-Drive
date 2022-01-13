@@ -116,10 +116,10 @@ Create table employees
  
       Partitioning is good in case of low cardinality column 
       But if the data is not possible to partition because of high cardinality like emp_id in such case we need to apply bucketing 
-      If we apply partitioning in column containing unique values, then it creates extra overhead to add partition
+      If we apply partitioning in column containing unique values, then it creates extra overhead
       If the data is in millions and billions then creating millions/billions of directory for each unique value will impact the performance
       So, bucketing is effective in such scenario
-      Hive uses hash function the clustered column and data is stored on the buckets as specified by the user while creating buckets
+      Hive uses hash function on the clustered column and data is stored on the buckets as specified by the user while creating buckets
       ===>>> Hash_function(bucket_column) Mod (no of buckets)
 
 
