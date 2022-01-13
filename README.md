@@ -138,7 +138,10 @@ Create table employees
 
      1- Hive has own metastore (metadata is data about data- database information, location, tables, types of file formats, columns etc.)
         > Hive metastore is a central repository of hive metadata
-     2- To know the command is - describe formatted;
+        > We can connect to hive metastore and know detail information about the hive tables
+        > Hive metastore stores all the structure information about tables, partitions & buckets
+        > Gives HDFS directory, column and data type information 
+     2- Command is - describe formatted;
      3- The details is coming from metastore. We have many types of metastore. 
      4- Hive uses derby by default (derby port is 9083 through which hive is connected) 
      5- To pull the data, hive is connected to metastore
@@ -151,6 +154,8 @@ Create table employees
      9- Both hive and spark has hive-site.xml in their conf directory
         > check ls /etc/hive/conf
         > check ls /usr/local/spark/conf
+     ![image](https://user-images.githubusercontent.com/70854976/149390621-713767a6-a40f-4111-9175-6773ade2c0c0.png)
+
      
 
   
