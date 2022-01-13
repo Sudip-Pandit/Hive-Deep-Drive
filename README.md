@@ -76,19 +76,19 @@ LOCATION '/user/<>/<directory>';
 
 Create table employees
             
-     (employee)id INT,
+     (employee_id INT,
   
      hire_date STRING,
   
      department_id INT)
   
-PARTITIONED BY (department_id INT)
+     PARTITIONED BY (department_id INT)
   
-Row format delimited 
+     Row format delimited 
   
-fields terminated by  ','
+     fields terminated by  ','
   
-Stored as textfile;
+     Stored as textfile;
 
 
   
