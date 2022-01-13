@@ -163,6 +163,8 @@ Create table employees
       => val df = spark.sql("select * from tablename") (This is common way)
       => val df1 = spark.table("db.table") (This is another way)
       
+   ![image](https://user-images.githubusercontent.com/70854976/149403080-15ae7cb9-95a9-4c46-b9f6-8a404548126a.png)
+
       
 
      
