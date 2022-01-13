@@ -154,7 +154,16 @@ Create table employees
      9- Both hive and spark has hive-site.xml in their conf directory
         > check ls /etc/hive/conf
         > check ls /usr/local/spark/conf
-  ![image](https://user-images.githubusercontent.com/70854976/149390621-713767a6-a40f-4111-9175-6773ade2c0c0.png)
+   
+   ![image](https://user-images.githubusercontent.com/70854976/149390621-713767a6-a40f-4111-9175-6773ade2c0c0.png)
+    
+    10- Basically, hive table can be queried directly spark.sql("")
+    
+      => spark.sql("select * from tablename")
+      => val df = spark.sql("select * from tablename") (This is common way)
+      => val df1 = spark.table("db.table") (This is another way)
+      
+      
 
      
 
