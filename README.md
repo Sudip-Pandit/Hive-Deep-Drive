@@ -134,6 +134,24 @@ Create table employees
       fields terminated by  ','
       Stored as textfile;
 
+# Hive and Spark Intregation
+
+     1- Hive has own metastore (metadata is data about data- database information, location, tables, types of file formats, columns etc.)
+        > Hive metastore is a central repository of hive metadata
+     2- To know the command is - describe formatted;
+     3- The details is coming from metastore. We have many types of metastore. 
+     4- Hive uses derby by default (derby port is 9083 through which hive is connected) 
+     5- To pull the data, hive is connected to metastore
+     6- In the hive conf folder, there is a file known as hive-site.xml. If you check the hivesite.xml
+        --<property>
+        --<name>hive.metastore.uris</name>
+        --<value>thrift:127.0.0.1:9083</value>
+     7- Spark has made a good inregation with hive (hive uses tez or mapreduce engine to process data but spark uses its own engine to process the data)
+     8- Metastore is same but processing engine is different. Both hive and spark can see both sides tables if intregated)
+     9- Both hive and spark has hive-site.xml in their conf directory
+        > check ls /etc/hive/conf
+        > check ls /usr/local/spark/conf
+     
 
   
   
