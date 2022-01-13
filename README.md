@@ -50,9 +50,22 @@ LOCATION '/user/<>/<directory>';
 # Partition By:
 ###### This clasue is used to partition the data into multiple files 
 ###### It is good in terms of performance tunning
-###### Table data is divided into multiple parts based on the low cardinality column to increase the performance of the hive
+###### Table data is divided into multiple parts based on the low cardinality column ###### to increase the performance of the hive
+###### Partitions are slices of data which helps to manage the data into more 
+###### managerable chunks.
+###### Partition column is generally taken from the common columns that are frequently used for queries having low cardinality columns. 
+###### Basically columns such as date, state, country and departments are taken as a ###### partition column.
+###### It is a good way of dividing a table into parts based on the value of the partitioned attribute of the column.
+###### Each partition can have its own columns, serDe and storage info
+###### Partition determine how the data is stored in a manageable way to increase the ###### performance of the hive
 
 # Clustered by:
-###### Bucketing is a concept to clasify the data into more manageable parts to increase the performance of the hive
-###### Table data is classified into n number of buckets using hash function
+###### Bucketing is a concept to clasify the data into more manageable parts to ###### increase the performance of the hive.
+###### Table data is classified into n number of buckets using hash function.
+###### Bucketing is based on the value of the hash function of the particular column ###### of a table.
+###### Bucketing is very seful for sampling and join optimization
+###### Hash partition within ranges
+###### For sub-sampling within a partition
+###### It can speed up queries that involve sampling the data (Without bucketing hive ###### scans entire datasets)
+  
   
