@@ -89,6 +89,16 @@ Create table employees
      fields terminated by  ','
   
      Stored as textfile;
+  
+# How to load data into partitioned table?
+  
+    load data local inpath ('/home/cloudera/employee.txt/') overwrite into table employees
+  
+# How to load data into partitioned table referring other table?
+  
+    load data local inpath '/home/cloudera/employee.txt') overwrite into table employees;
+    INSERT OVERWRITE TABLE employees PARTITION(department_id) SELECT
+    employee_id, hire_date, department_id;
 
 
   
