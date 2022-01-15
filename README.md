@@ -43,7 +43,7 @@ This repository contains all concepts and commands related to hive.
   
 # Simple Project start
 
-##### Go to the edge node
+  ##### Go to the edge node
 
   hadoop fs -mkdir /user/cloudera/data1
   hadoop fs -put /home/cloudera/data/txnsd.txt /user/cloudera/data1
@@ -55,7 +55,7 @@ This repository contains all concepts and commands related to hive.
   
   use demo;
 
-  ###### create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/data1';
+  create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/t_data1';
 
   ##### select * from t_data1;
 
@@ -63,7 +63,7 @@ This repository contains all concepts and commands related to hive.
 
   insert into t_data2 select * from t_data1 where category='Gymnastics';
 
-  ######### select * from tardata;
+  ##### select * from t_data2;
 
 # How to describe the hive table attributes?
   
