@@ -5,6 +5,9 @@ This repository contains all concepts and commands related to hive.
      1)External table
 
      2)Internal Table
+     
+     If you drop managed table, the backened directory get deleted.
+     If you drop external table, the backened directory is not deleted.
 
 # External table
      
@@ -14,8 +17,6 @@ This repository contains all concepts and commands related to hive.
  4) Internal tables are called managed tables.
  5) We need to mention the external keyword while creating the external table.
  6) Data is stored in the system defined /user/hive/warehouse/ directory. 
- 
- # 
  
 # How to create table in Hive?
 
@@ -68,7 +69,7 @@ This repository contains all concepts and commands related to hive.
   ##### select * from t_data2;
 
   ![image](https://user-images.githubusercontent.com/70854976/149632415-46376463-a9f2-445e-9e70-17d333ae6e9d.png)
-
+  
 # How to describe the hive table attributes?
   
 # ROW FORMAT:
