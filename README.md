@@ -8,13 +8,15 @@ This repository contains all concepts and commands related to hive.
 
 # External table
      
-     > It stores data not in the /user/hive/warehouse/ directory but internal table stores data in /user/hive/warehouse directory.
-     > It is under control of hive .i.e. once the table is dropped both the schema and data in the table get dropped.
-     > But, when droping the external table, only the schema get dropped but data remains exist.
-     > Internal tables are called managed tables.
-     > We need to mention the external keyword while creating the external table.
-     > Data is stored in the system defined /user/hive/warehouse/ directory. 
-
+ 1) It stores data not in the /user/hive/warehouse/ directory but internal table stores data in /user/hive/warehouse directory.
+ 2) It is under control of hive .i.e. once the table is dropped both the schema and data in the table get dropped.
+ 3) But, when droping the external table, only the schema get dropped but data remains exist.
+ 4) Internal tables are called managed tables.
+ 5) We need to mention the external keyword while creating the external table.
+ 6) Data is stored in the system defined /user/hive/warehouse/ directory. 
+ 
+ # 
+ 
 # How to create table in Hive?
 
      CREATE TABLE hiveFirstTable(employee_id INT, first_name STRING, last_name STRING, hire_date STRING, salary INT, email STRING, phone_number STRING)
@@ -64,6 +66,8 @@ This repository contains all concepts and commands related to hive.
   insert into t_data2 select * from t_data1 where category='Gymnastics';
 
   ##### select * from t_data2;
+
+  ![image](https://user-images.githubusercontent.com/70854976/149632415-46376463-a9f2-445e-9e70-17d333ae6e9d.png)
 
 # How to describe the hive table attributes?
   
