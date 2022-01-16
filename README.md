@@ -44,7 +44,7 @@ This repository contains all concepts and commands related to hive.
 
      LOCATION '/user/<>/<directory>';
   
-# Simple Project start
+# Simple Project start-1
 
   ##### Go to the edge node
 
@@ -69,7 +69,47 @@ This repository contains all concepts and commands related to hive.
   ##### select * from t_data2;
 
   ![image](https://user-images.githubusercontent.com/70854976/149632415-46376463-a9f2-445e-9e70-17d333ae6e9d.png)
+
+# practice Project-2
+
+  ##### Step 1
+  create a file name txnsd.txt using touch command (touch txnsd.txt)
   
+  ##### Step 2
+  Use command cat txnsd.txt
+  00000002,06-01-2011,Exercise & Fitness
+  00000003,06-05-2011,Gymnastics
+  00000012,02-08-2011,Indoor Games
+  00000014,02-25-2011,Gymnastics
+  00000022,10-10-2011,Water Sports
+  00000023,05-02-2011,Gymnastics
+  
+  clips: ![image](https://user-images.githubusercontent.com/70854976/149676427-201cb52c-3bd0-4e7e-8f54-25a11e0f365b.png)
+
+  ##### Step 3
+  => use command- hdfs dfs -mkdir /user/cloudera/data
+  ![image](https://user-images.githubusercontent.com/70854976/149676523-9d6ce91e-ce96-48b4-a873-ea6c9883e89a.png)
+  => copy txnsd.txt to /user/cloudera/data directory
+  ![image](https://user-images.githubusercontent.com/70854976/149676591-ab6c80e1-2770-479e-90d1-a2e37c1d4382.png)
+  => Check the /user/cloudera/data
+  ![image](https://user-images.githubusercontent.com/70854976/149676645-465df0eb-59d1-44f7-893f-5f625480a0e1.png)
+  
+  ##### Step 3
+  => Go to the hive shell and create a database t_db and use this db;
+  ![image](https://user-images.githubusercontent.com/70854976/149676744-ef99510c-25ba-4f47-9dcb-592e0570ccd7.png)
+  ![image](https://user-images.githubusercontent.com/70854976/149676802-ddd88094-9b7c-4ff2-a852-e7009f9ee8f1.png)
+ 
+  ##### Step 4
+  select * from t_sdata;
+ 
+  ##### Step 4
+  create table tardata(id int, datename string, category string) row format delimited fields terminated by ',';
+  insert into tardata select * from t_sdata where category="Gymnastics";
+ 
+  ##### Step 5
+  Check the table 
+  ![image](https://user-images.githubusercontent.com/70854976/149676950-3dc3cfcc-e8f1-415f-a4df-d64b9495d0b5.png)
+
 # How to describe the hive table attributes?
   
 # ROW FORMAT:
