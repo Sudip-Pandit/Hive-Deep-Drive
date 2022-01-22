@@ -171,6 +171,8 @@ This repository contains all concepts and commands related to hive.
      ==> !hadoop fs -ls /user/cloudera/tar_part/country=USA;
 
 # Project-4
+?* Project explanation: 
+/* Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. Next is select the table from stg and insert into static_part. Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
 
   ==> create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
 
@@ -186,21 +188,22 @@ This repository contains all concepts and commands related to hive.
       ==> !hadoop fs -cat /user/cloudera/static_part/country=INDIA/*;
   
  # Project-5
- 
-   ==>create database checkpart;
-   ==> use checkpart;
+  
+      ==>create database checkpart;
+      ==> use checkpart;
+      
    ==> create table static_part_new(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location '/user/cloudera/static_part_new';
 
-  ==> create table stg_new(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg_new';
+     ==> create table stg_new(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg_new';
 
-  ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg_new;
+     ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg_new;
 
-  ==> select * from stg_new;
+     ==> select * from stg_new;
 
-  ==> insert into static_part_new partition(country='INDIA') select '(country)?+.+' from stg_new where country='IND';
+     ==> insert into static_part_new partition(country='INDIA') select '(country)?+.+' from stg_new where country='IND';
 
-  ==> !hadoop fs -ls /user/cloudera/static_part_new/;
-  ==> !hadoop fs -cat /user/cloudera/static_part_new/country=INDIA/*;
+     ==> !hadoop fs -ls /user/cloudera/static_part_new/;
+     ==> !hadoop fs -cat /user/cloudera/static_part_new/country=INDIA/*;
   
 
 # Partition By:
