@@ -141,6 +141,69 @@ This repository contains all concepts and commands related to hive.
      It specifys the format of the data file. 
      The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
 
+# How to download the data from AWS S3?
+
+     aws s3 presign s3://<bucket_name>/<folder_name>/<file_name>/
+
+# Project-3
+
+  ==> Check in Edge Node
+
+  ==> ls /home/cloudera/partdata/
+
+  ==>   Hive Shell
+
+  ==> create database partc;
+
+  1. use partc;
+
+  2. create table tar_part(id string,name string,check string) partitioned by (country string) row format delimited fields terminated by ','  location '/user/cloudera/tar_part';
+
+  3. load data local inpath '/home/cloudera/partdata/INDTxns.csv' into table tar_part partition(country='INDIA');
+
+  4. load data local inpath '/home/cloudera/partdata/UKTxns.csv' into table tar_part partition(country='UK');
+
+  5. load data local inpath '/home/cloudera/partdata/USTxns.csv' into table tar_part partition(country='USA');
+
+
+  ==> !hadoop fs -ls /user/cloudera/tar_part;
+  ==> !hadoop fs -ls /user/cloudera/tar_part/country=INDIA;
+  ==> !hadoop fs -ls /user/cloudera/tar_part/country=UK;
+  ==> !hadoop fs -ls /user/cloudera/tar_part/country=USA;
+
+# Project-4
+
+  ==> create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
+
+  ==> create table stg(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg';
+
+  ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;
+
+  ==> select * from stg;
+
+  ==> insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';
+
+  ==> !hadoop fs -ls /user/cloudera/static_part/;
+  ==> !hadoop fs -cat /user/cloudera/static_part/country=INDIA/*;
+  
+ # Project-5
+ 
+   ==>create database checkpart;
+   ==> use checkpart;
+   ==> create table static_part_new(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location '/user/cloudera/static_part_new';
+
+  ==> create table stg_new(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg_new';
+
+  ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg_new;
+
+  ==> select * from stg_new;
+
+  ==> insert into static_part_new partition(country='INDIA') select '(country)?+.+' from stg_new where country='IND';
+
+  ==> !hadoop fs -ls /user/cloudera/static_part_new/;
+  ==> !hadoop fs -cat /user/cloudera/static_part_new/country=INDIA/*;
+  
+
 # Partition By:
   
 1) This clasue is used to partition the data into multiple files 
