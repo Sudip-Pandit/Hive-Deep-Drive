@@ -147,13 +147,13 @@ This repository contains all concepts and commands related to hive.
 
 # Project-3
 
-  ==> Check in Edge Node
+     ==> Check in Edge Node
 
-  ==> ls /home/cloudera/partdata/
+     ==> ls /home/cloudera/partdata/
 
-  ==>   Hive Shell
+     ==>   Hive Shell
 
-  ==> create database partc;
+     ==> create database partc;
 
   1. use partc;
 
@@ -166,10 +166,10 @@ This repository contains all concepts and commands related to hive.
   5. load data local inpath '/home/cloudera/partdata/USTxns.csv' into table tar_part partition(country='USA');
 
 
-  ==> !hadoop fs -ls /user/cloudera/tar_part;
-  ==> !hadoop fs -ls /user/cloudera/tar_part/country=INDIA;
-  ==> !hadoop fs -ls /user/cloudera/tar_part/country=UK;
-  ==> !hadoop fs -ls /user/cloudera/tar_part/country=USA;
+     ==> !hadoop fs -ls /user/cloudera/tar_part;
+     ==> !hadoop fs -ls /user/cloudera/tar_part/country=INDIA;
+     ==> !hadoop fs -ls /user/cloudera/tar_part/country=UK;
+     ==> !hadoop fs -ls /user/cloudera/tar_part/country=USA;
 
 # Project-4
 
@@ -179,12 +179,12 @@ This repository contains all concepts and commands related to hive.
 
   ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;
 
-  ==> select * from stg;
+     ==> select * from stg;
 
   ==> insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';
 
-  ==> !hadoop fs -ls /user/cloudera/static_part/;
-  ==> !hadoop fs -cat /user/cloudera/static_part/country=INDIA/*;
+      ==> !hadoop fs -ls /user/cloudera/static_part/;
+      ==> !hadoop fs -cat /user/cloudera/static_part/country=INDIA/*;
   
  # Project-5
  
