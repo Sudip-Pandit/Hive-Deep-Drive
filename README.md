@@ -165,7 +165,6 @@ This repository contains all concepts and commands related to hive.
 
   5. load data local inpath '/home/cloudera/partdata/USTxns.csv' into table tar_part partition(country='USA');
 
-
      ==> !hadoop fs -ls /user/cloudera/tar_part;
      ==> !hadoop fs -ls /user/cloudera/tar_part/country=INDIA;
      ==> !hadoop fs -ls /user/cloudera/tar_part/country=UK;
