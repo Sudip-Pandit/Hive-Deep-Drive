@@ -146,7 +146,8 @@ This repository contains all concepts and commands related to hive.
      aws s3 presign s3://<bucket_name>/<folder_name>/<file_name>/
 
 # Project-3 (STATIC PARTITION)
-# Project explanation- First create a dir pardata, then go to the hive shell and create database partc. Use this database and create table called tar_part and load the dat from HDFS dirS given below. Finally check the partition directories from hive shell.
+
+     Project explanation- First create a dir pardata, then go to the hive shell and create database partc. Use this database and create table called tar_part and load the dat  from HDFS dirS given below. Finally check the partition directories from hive shell.
 
      ==> Check in Edge Node
 
@@ -172,8 +173,9 @@ This repository contains all concepts and commands related to hive.
      ==> !hadoop fs -ls /user/cloudera/tar_part/country=USA;
 
 # Project-4 (STATIC PARTITION)
-# Project explanation: 
-# Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. Next is select the table from stg and insert into static_part. Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
+     
+     Project explanation: 
+     Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. Next is select the table from stg and insert into static_part. Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
 
   ==> create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
 
