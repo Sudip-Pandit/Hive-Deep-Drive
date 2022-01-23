@@ -252,7 +252,9 @@ ste4 - Describe table, it gives the clear information about the partitioned colu
 
 1- The context would be in case only we need the certain portion of data from the whole data. 
 2- The partitioned name is customize.
-3- 
+3- Static laod: If the data is already seperated and we have to load into the partition
+4- Static Insert: If the data is dumped in a single file and if we are required only certain portion of data with customized partition name.
+5- Dynamic Insert: If the data is dumped in a single file and required all the category of data with non partitioned name.
 
 Project-6 (Dynamic partition)
 
@@ -299,6 +301,11 @@ step5- country column should be referred to the target table
      we mention to the last portion of the select statement as described above)
      
 ![image](https://user-images.githubusercontent.com/70854976/150695040-e7c8766a-fb23-4b38-b0c1-a96c627e1c3c.png)
+
+# Full code:
+
+![image](https://user-images.githubusercontent.com/70854976/150695327-647071df-3623-4f01-8589-ff1a2ac911a4.png)
+
 
 # Partition By:
   
