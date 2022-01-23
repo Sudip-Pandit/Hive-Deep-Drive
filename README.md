@@ -251,12 +251,16 @@ ste4 - Describe table, it gives the clear information about the partitioned colu
 # Summary of static partition
 
 1- The context would be in case only we need the certain portion of data from the whole data. 
+
 2- The partitioned name is customize.
+
 3- Static laod: If the data is already seperated and we have to load into the partition
+
 4- Static Insert: If the data is dumped in a single file and if we are required only certain portion of data with customized partition name.
+
 5- Dynamic Insert: If the data is dumped in a single file and required all the category of data with non partitioned name.
 
-Project-6 (Dynamic partition)
+# Project-6 (Dynamic partition)
 
      Explanation:-
      Suppose you have allcounrty.csv data consisting data related to India, US and UK at location /home/cloudera/partdata. 
