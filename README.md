@@ -147,7 +147,9 @@ This repository contains all concepts and commands related to hive.
 
 # Project-3 (STATIC PARTITION)
 
-     Project explanation- First create a dir pardata, then go to the hive shell and create database partc. Use this database and create table called tar_part and load the dat  from HDFS dirS given below. Finally check the partition directories from hive shell.
+     Project explanation- First create a dir pardata, then go to the hive shell and create database partc.
+     Use this database and create table called tar_part and load the dat  from HDFS dirS given below. 
+     Finally check the partition directories from hive shell.
 
      ==> Check in Edge Node
 
@@ -175,7 +177,9 @@ This repository contains all concepts and commands related to hive.
 # Project-4 (STATIC PARTITION)
      
      Project explanation: 
-     Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. Next is select the table from stg and insert into static_part. Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
+     Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. 
+     Next is select the table from stg and insert into static_part.
+     Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
 
   ==> create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
 
@@ -208,6 +212,93 @@ This repository contains all concepts and commands related to hive.
      ==> !hadoop fs -ls /user/cloudera/static_part_new/;
      ==> !hadoop fs -cat /user/cloudera/static_part_new/country=INDIA/*;
   
+# Project-6 (Static Partition)
+     
+     Problem statement:-
+     Create a partitioned table dest_part having columns id, name, check which is partitioned
+     by column country. Next is Insert only the India data from stg to the target partiitoned table
+     with the partitioned name as INDIA.
+  
+  Step1 - syntax to create a partitioned table is 
+  
+       create table dest_part(id int, name string, check string) partitioned by (country ='India')
+       row format delimited fields terminated by ',' loacation '/user/cloudera/dest_part';
+     
+ Step2 - Syntax is
+ 
+      Insert into dest_part partition(country = 'India') select id, name, check from stg where country ='INDIA';
+      
+      (comment: Partitioned column is already getting filled so inly take three columns)
+      (If you have many columns need to ommit then the following command is used:
+       
+       enable this property:
+       --set hive.support.quoted.identifiers=none;
+       --select `(partition_column)?+.+` from <table_name>;)
+       
+ Step3 - Check the partitoned column using this syntax
+ 
+      !hadoop fs -ls /user/cloudera/dest_part
+      (comment: you see the following partitioned column)
+
+![image](https://user-images.githubusercontent.com/70854976/150693685-5c1cb0ff-bc72-4717-9af4-78cc614a94e9.png)
+
+ste4 - Describe table, it gives the clear information about the partitioned column
+
+     desc dest_part;
+
+![image](https://user-images.githubusercontent.com/70854976/150693876-cefb4251-22dc-4aa7-abb9-324588a5fcb1.png)
+
+# Summary of static partition
+
+1- The context would be in case only we need the certain portion of data from the whole data. 
+2- The partitioned name is customize.
+3- 
+
+Project-6 (Dynamic partition)
+
+     Explanation:-
+     Suppose you have allcounrty.csv data consisting data related to India, US and UK at location /home/cloudera/partdata. 
+     Create a partitioned table with columns (id, name, check) with partitioned column as country.
+     Find a way to create partitions in target table in all the countries automatically?
+
+----Solutions:
+
+step-1 (make sure the following two things down here)
+     
+     I have allcountries.csv in edge node (single file)
+     I also have table partdata in HDFS location.
+    
+     ----create a database name dyn_part
+     ----use dyn_part
+     
+ step2 - Create a stagging table
+ 
+      create table stg(id int, name string, check string) partitioned by (country string)
+      row format delimited fields terminated by ','
+      location '/user/cloduera/dyn_part'
+      
+ step3 - Create a dynamic partitioned table
+     
+     create table dyn(id int, name string, check string) partitioned by (country string)
+     row format delimited fields terminated by ','
+     location '/user/cloduera/dyn_part'
+     
+step4 - load the data into stagging table
+
+     load data local inpath '/user/cloudera/allcountries.csv into table stg;
+     
+step5- country column should be referred to the target table
+
+     --enabled the property:
+     
+     => set hive.exec.dynamic.partition.mode=nonstrict
+
+     => insert into dyn_part partition(country) select id, name, check, country from stg;
+     
+     => (comment: Here the difference from static partition is that whatever the partitioned column we have
+     we mention to the last portion of the select statement as described above)
+     
+![image](https://user-images.githubusercontent.com/70854976/150695040-e7c8766a-fb23-4b38-b0c1-a96c627e1c3c.png)
 
 # Partition By:
   
