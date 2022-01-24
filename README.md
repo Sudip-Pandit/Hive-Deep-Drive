@@ -47,30 +47,32 @@ This repository contains ***all concepts and commands related to hive***.
   
 # Simple Project start-1
 
-  ##### Go to the edge node
+* Go to the edge node
 
-  hadoop fs -mkdir /user/cloudera/data1
-  hadoop fs -put /home/cloudera/data/txnsd.txt /user/cloudera/data1
+  ***hadoop fs -mkdir /user/cloudera/data1***
+  ***hadoop fs -put /home/cloudera/data/txnsd.txt /user/cloudera/data1***
 
-  ##### Go to the hive shell 
-  ##### Hive
+* Go to the hive shell 
+
+* Hive
 
   ###### create database demo;
   
-  use demo;
+  ###### use demo;
 
-  create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/t_data1';
+  ###### create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/t_data1';
 
   ##### select * from t_data1;
 
-  create table t_data2(id int,name string,category string) row format delimited fields terminated by ',';
+  ###### create table t_data2(id int,name string,category string) row format delimited fields terminated by ',';
 
-  insert into t_data2 select * from t_data1 where category='Gymnastics';
+  ###### insert into t_data2 select * from t_data1 where category='Gymnastics';
 
   ##### select * from t_data2;
-
+#
   ![image](https://user-images.githubusercontent.com/70854976/149632415-46376463-a9f2-445e-9e70-17d333ae6e9d.png)
-
+#
+#
 # Practice Project-2
 
   ##### Step 1
