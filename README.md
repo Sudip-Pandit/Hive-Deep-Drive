@@ -268,13 +268,13 @@ This repository contains ***all concepts and commands related to hive***.
 # Project-6 (Dynamic partition)
 
      Explanation:-
-     Suppose you have allcounrty.csv data consisting data related to India, US and UK at location /home/cloudera/partdata. 
-     Create a partitioned table with columns (id, name, check) with partitioned column as country.
-     Find a way to create partitions in target table in all the countries automatically?
+     `Suppose you have allcounrty.csv data consisting data related to India, US and UK at location /home/cloudera/partdata.` 
+     `Create a partitioned table with columns (id, name, check) with partitioned column as country.`
+     `Find a way to create partitions in target table in all the countries automatically?`
 
 ----Solutions:
 
-step-1 (make sure the following two things down here)
+`step-1 (make sure the following two things down here)`
      
    ***I have allcountries.csv in edge node (single file)***
    ***I also have table partdata in HDFS location***.
@@ -282,23 +282,23 @@ step-1 (make sure the following two things down here)
      ----create a database name dyn_part
      ----use dyn_part
      
- step2 - Create a stagging table
+ `step2 - Create a stagging table`
  
       create table stg(id int, name string, check string) partitioned by (country string)
       row format delimited fields terminated by ','
       location '/user/cloduera/dyn_part'
       
- step3 - Create a dynamic partitioned table
+ `step3 - Create a dynamic partitioned table`
      
      create table dyn(id int, name string, check string) partitioned by (country string)
      row format delimited fields terminated by ','
      location '/user/cloduera/dyn_part'
      
-step4 - load the data into stagging table
+`step4 - load the data into stagging table`
 
      ***load data local inpath '/user/cloudera/allcountries.csv into table stg***;
      
-step5- country column should be referred to the target table
+`step5- country column should be referred to the target table`
 
    --***enabled the property***:
      
