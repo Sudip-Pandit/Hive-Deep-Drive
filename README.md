@@ -47,39 +47,41 @@ This repository contains ***all concepts and commands related to hive***.
   
 # Simple Project start-1
 
-* Go to the edge node
+* `Go to the edge node`
 
   ***hadoop fs -mkdir /user/cloudera/data1***
   ***hadoop fs -put /home/cloudera/data/txnsd.txt /user/cloudera/data1***
 
-* Go to the hive shell 
+* `Go to the hive shell` 
 
-* Hive
+* `Hive`
 
-  ###### create database demo;
+1. `create database demo;`
   
-  ###### use demo;
+2. `use demo;`
 
-  ###### create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/t_data1';
+3. `create table t_data1(id int,name string,category string) row format delimited fields terminated by ',' location '/user/cloudera/t_data1';`
 
-  ##### select * from t_data1;
+4. `select * from t_data1;`
 
-  ###### create table t_data2(id int,name string,category string) row format delimited fields terminated by ',';
+5. `create table t_data2(id int,name string,category string) row format delimited fields terminated by ',';`
 
-  ###### insert into t_data2 select * from t_data1 where category='Gymnastics';
+6. `insert into t_data2 select * from t_data1 where category='Gymnastics';`
 
-  ##### select * from t_data2;
+7. `select * from t_data2;`
 #
   ![image](https://user-images.githubusercontent.com/70854976/149632415-46376463-a9f2-445e-9e70-17d333ae6e9d.png)
 #
 #
+
 # Practice Project-2
 
   ##### Step 1
-  create a file name txnsd.txt using touch command (touch txnsd.txt)
+  
+  *`create a file name txnsd.txt using touch command (touch txnsd.txt)`
   
   ##### Step 2
-  Use command cat txnsd.txt
+  `Use command cat txnsd.txt`
   
        00000002,06-01-2011,Exercise & Fitness
        00000003,06-05-2011,Gymnastics
@@ -92,21 +94,21 @@ This repository contains ***all concepts and commands related to hive***.
 
   ##### Step 3
   
-  * Use command- hdfs dfs -mkdir /user/cloudera/data
+  * `Use command- hdfs dfs -mkdir /user/cloudera/data`
   
   ![image](https://user-images.githubusercontent.com/70854976/149676523-9d6ce91e-ce96-48b4-a873-ea6c9883e89a.png)
  
- * copy txnsd.txt to /user/cloudera/data directory
+ * `copy txnsd.txt to /user/cloudera/data directory`
   
  ![image](https://user-images.githubusercontent.com/70854976/149676591-ab6c80e1-2770-479e-90d1-a2e37c1d4382.png)
  
- * Check the /user/cloudera/data
+ * `Check the /user/cloudera/data`
  
  ![image](https://user-images.githubusercontent.com/70854976/149676645-465df0eb-59d1-44f7-893f-5f625480a0e1.png)
   
   ##### Step 3
   
- * Go to the hive shell and create a database t_db and use this db;
+ * `Go to the hive shell and create a database t_db and use this db;`
  
  ![image](https://user-images.githubusercontent.com/70854976/149676744-ef99510c-25ba-4f47-9dcb-592e0570ccd7.png)
   
@@ -114,17 +116,17 @@ This repository contains ***all concepts and commands related to hive***.
  
   ##### Step 4
   
-  select * from t_sdata;
+  `select * from t_sdata;`
  
   ##### Step 4
   
-  * create table tardata(id int, datename string, category string) row format delimited fields terminated by ',';
+  * `create table tardata(id int, datename string, category string) row format delimited fields terminated by ',';`
   
-  * insert into tardata select * from t_sdata where category="Gymnastics";
+  * `insert into tardata select * from t_sdata where category="Gymnastics";`
  
   ##### Step 5
   
-  * Check the table 
+  * `Check the table`
   
   ![image](https://user-images.githubusercontent.com/70854976/149676950-3dc3cfcc-e8f1-415f-a4df-d64b9495d0b5.png)
 
@@ -132,12 +134,12 @@ This repository contains ***all concepts and commands related to hive***.
   
 # ROW FORMAT:
   
-* It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
+* `It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE`
 
 # TBLPROPERTIES:
      
-     The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs.
-     Example: Ignoring 'n' number of lines of header or footer from file to be loaded
+     `The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs`.
+     `Example: Ignoring 'n' number of lines of header or footer from file to be loaded`
 
 # STORED AS:
   
