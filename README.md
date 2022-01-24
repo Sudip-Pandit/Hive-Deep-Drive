@@ -182,33 +182,36 @@ This repository contains ***all concepts and commands related to hive***.
 # Project-4 (STATIC PARTITION)
      
      * Project explanation: 
-     Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. 
-     Next is select the table from stg and insert into static_part.
-     Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
+     
+   ***Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. 
+   ***Next is select the table from stg and insert into static_part***.
+   ***Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/****.
 
- * create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
+ * `create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';`
 
-* create table stg(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg';
+* `create table stg(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg';`
 
-* load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;
+* `load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;`
 
      ==> ***select * from stg***;
 
-* insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';
+* `insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';`
 
   ***!hadoop fs -ls /user/cloudera/static_part/***;
   ***!hadoop fs -cat /user/cloudera/static_part/country=INDIA/****;
   
  # Project-5
   
-      ==>create database checkpart;
+`step1 - create database checkpart;`
       ==> use checkpart;
       
-   ==> create table static_part_new(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location '/user/cloudera/static_part_new';
+`step2 - create table static_part_new(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location` `'/user/cloudera/static_part_new';`
 
-     ==> create table stg_new(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg_new';
+step3 - `create table stg_new(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg_new';`
 
-     ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg_new;
+step4 - `load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg_new;`
+
+`step5 - do the following commands:`
 
      ==> select * from stg_new;
 
@@ -224,36 +227,36 @@ This repository contains ***all concepts and commands related to hive***.
      by column country. Next is Insert only the India data from stg to the target partiitoned table
      with the partitioned name as INDIA.
   
-* Step1 - syntax to create a partitioned table is 
+* `Step1 - syntax to create a partitioned table is`
   
        create table dest_part(id int, name string, check string) partitioned by (country ='India')
        row format delimited fields terminated by ',' loacation '/user/cloudera/dest_part';
      
-* Step2 - Syntax is
+* `Step2 - Syntax is`
  
       Insert into dest_part partition(country = 'India') select id, name, check from stg where country ='INDIA';
       
       (comment: Partitioned column is already getting filled so inly take three columns)
       (If you have many columns need to ommit then the following command is used:
        
-       enable this property:
+      enable this property:
        --set hive.support.quoted.identifiers=none;
        --select `(partition_column)?+.+` from <table_name>;)
        
-* Step3 - Check the partitoned column using this syntax
+* `Step3 - Check the partitoned column using this syntax`
  
       !hadoop fs -ls /user/cloudera/dest_part
       (comment: you see the following partitioned column)
 
 ![image](https://user-images.githubusercontent.com/70854976/150693685-5c1cb0ff-bc72-4717-9af4-78cc614a94e9.png)
 
-* ste4 - Describe table, it gives the clear information about the partitioned column
+* `ste4 - Describe table, it gives the clear information about the partitioned column`
 
      desc dest_part;
 
 ![image](https://user-images.githubusercontent.com/70854976/150693876-cefb4251-22dc-4aa7-abb9-324588a5fcb1.png)
 
-# Summary of static partition
+# `Summary of static partition`
 
 1- The context would be in case only we need the certain portion of data from the whole data. 
 
