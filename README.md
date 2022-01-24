@@ -138,13 +138,13 @@ This repository contains ***all concepts and commands related to hive***.
 
 # TBLPROPERTIES:
      
-     `The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs`.
-     `Example: Ignoring 'n' number of lines of header or footer from file to be loaded`
+* `The TBLPROPERTIES clause allows you to tag the table definition with your own metadata key/value pairs`.
+* `Example: Ignoring 'n' number of lines of header or footer from file to be loaded`
 
 # STORED AS:
-  
-     It specifys the format of the data file. 
-     The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
+
+* `It specifys the format of the data file.` 
+* `The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE.`
 #
 # How to download the data from AWS S3?
 
@@ -152,9 +152,9 @@ This repository contains ***all concepts and commands related to hive***.
 #
 # Project-3 (STATIC PARTITION)
 
-     * Project explanation- First create a dir pardata, then go to the hive shell and create database partc.
-     Use this database and create table called tar_part and load the dat  from HDFS dirS given below. 
-     Finally check the partition directories from hive shell.
+`* Project explanation- First create a dir pardata, then go to the hive shell and create database partc.`
+`Use this database and create table called tar_part and load the dat  from HDFS dirS given below.`
+`Finally check the partition directories from hive shell.`
 
      ==> Check in Edge Node
 
@@ -164,15 +164,15 @@ This repository contains ***all concepts and commands related to hive***.
 
      ==> create database partc;
 
-  1. use partc;
+  `1. use partc;
 
-  2. create table tar_part(id string,name string,check string) partitioned by (country string) row format delimited fields terminated by ','  location '/user/cloudera/tar_part';
+  2. create table tar_part(id string,name string,check string) partitioned by (country string) row format delimited fields terminated by ','  location '/user/cloudera/tar_part';`
 
-  3. load data local inpath '/home/cloudera/partdata/INDTxns.csv' into table tar_part partition(country='INDIA');
+  `3. load data local inpath '/home/cloudera/partdata/INDTxns.csv' into table tar_part partition(country='INDIA');`
 
-  4. load data local inpath '/home/cloudera/partdata/UKTxns.csv' into table tar_part partition(country='UK');
+  `4. load data local inpath '/home/cloudera/partdata/UKTxns.csv' into table tar_part partition(country='UK');`
 
-  5. load data local inpath '/home/cloudera/partdata/USTxns.csv' into table tar_part partition(country='USA');
+  `5. load data local inpath '/home/cloudera/partdata/USTxns.csv' into table tar_part partition(country='USA');`
 
      ==> !hadoop fs -ls /user/cloudera/tar_part;
      ==> !hadoop fs -ls /user/cloudera/tar_part/country=INDIA;
@@ -183,7 +183,7 @@ This repository contains ***all concepts and commands related to hive***.
      
      * Project explanation: 
      
-   ***Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. 
+   ***Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg***. 
    ***Next is select the table from stg and insert into static_part***.
    ***Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/****.
 
