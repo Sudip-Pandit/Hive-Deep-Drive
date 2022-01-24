@@ -12,12 +12,12 @@ This repository contains ***all concepts and commands related to hive***.
 
 # External table
      
- 1) It stores data not in the /user/hive/warehouse/ directory but internal table stores data in /user/hive/warehouse directory.
- 2) It is under control of hive .i.e. once the table is dropped both the schema and data in the table get dropped.
- 3) But, when droping the external table, only the schema get dropped but data remains exist.
- 4) Internal tables are called managed tables.
- 5) We need to mention the external keyword while creating the external table.
- 6) Data is stored in the system defined /user/hive/warehouse/ directory. 
+ * It stores data not in the /user/hive/warehouse/ directory but internal table stores data in /user/hive/warehouse directory.
+ * It is under control of hive .i.e. once the table is dropped both the schema and data in the table get dropped.
+ * But, when droping the external table, only the schema get dropped but data remains exist.
+ * Internal tables are called managed tables.
+ * We need to mention the external keyword while creating the external table.
+ * Data is stored in the system defined /user/hive/warehouse/ directory. 
  
 # How to create table in Hive?
 
@@ -90,21 +90,21 @@ This repository contains ***all concepts and commands related to hive***.
 
   ##### Step 3
   
-  Use command- hdfs dfs -mkdir /user/cloudera/data
+  * Use command- hdfs dfs -mkdir /user/cloudera/data
   
   ![image](https://user-images.githubusercontent.com/70854976/149676523-9d6ce91e-ce96-48b4-a873-ea6c9883e89a.png)
  
- copy txnsd.txt to /user/cloudera/data directory
+ * copy txnsd.txt to /user/cloudera/data directory
   
  ![image](https://user-images.githubusercontent.com/70854976/149676591-ab6c80e1-2770-479e-90d1-a2e37c1d4382.png)
  
- Check the /user/cloudera/data
+ * Check the /user/cloudera/data
  
  ![image](https://user-images.githubusercontent.com/70854976/149676645-465df0eb-59d1-44f7-893f-5f625480a0e1.png)
   
   ##### Step 3
   
- Go to the hive shell and create a database t_db and use this db;
+ * Go to the hive shell and create a database t_db and use this db;
  
  ![image](https://user-images.githubusercontent.com/70854976/149676744-ef99510c-25ba-4f47-9dcb-592e0570ccd7.png)
   
@@ -116,13 +116,13 @@ This repository contains ***all concepts and commands related to hive***.
  
   ##### Step 4
   
-  create table tardata(id int, datename string, category string) row format delimited fields terminated by ',';
+  * create table tardata(id int, datename string, category string) row format delimited fields terminated by ',';
   
-  insert into tardata select * from t_sdata where category="Gymnastics";
+  * insert into tardata select * from t_sdata where category="Gymnastics";
  
   ##### Step 5
   
-  Check the table 
+  * Check the table 
   
   ![image](https://user-images.githubusercontent.com/70854976/149676950-3dc3cfcc-e8f1-415f-a4df-d64b9495d0b5.png)
 
@@ -130,7 +130,7 @@ This repository contains ***all concepts and commands related to hive***.
   
 # ROW FORMAT:
   
-     It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
+* It describe the format of the data file that will be loaded to Hive. There are two possible types: DELIMITED, SERDE
 
 # TBLPROPERTIES:
      
