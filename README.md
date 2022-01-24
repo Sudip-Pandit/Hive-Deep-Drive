@@ -148,7 +148,7 @@ This repository contains ***all concepts and commands related to hive***.
 
 # Project-3 (STATIC PARTITION)
 
-     Project explanation- First create a dir pardata, then go to the hive shell and create database partc.
+     * Project explanation- First create a dir pardata, then go to the hive shell and create database partc.
      Use this database and create table called tar_part and load the dat  from HDFS dirS given below. 
      Finally check the partition directories from hive shell.
 
@@ -177,7 +177,7 @@ This repository contains ***all concepts and commands related to hive***.
 
 # Project-4 (STATIC PARTITION)
      
-     Project explanation: 
+     * Project explanation: 
      Create two tables static_part and stg, then load data from '/home/cloudera/partdata/allcountry.csv' into table stg. 
      Next is select the table from stg and insert into static_part.
      Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
