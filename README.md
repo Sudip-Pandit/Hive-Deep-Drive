@@ -1,14 +1,14 @@
 # Hive-Deep-Drive
-This repository contains***all concepts and commands related to hive.
+This repository contains ***all concepts and commands related to hive***.
 # Hive Tables
 
-     1) ***External table
+     1)***External table***
 
-     2)*** Internal Table
+     2)*** Internal Table***
      
-  If you drop managed table***the backened directory get deleted.  
+  If you drop managed table ***the backened directory get deleted***.  
   
-  If you drop external table,***the backened directory is not deleted.
+  If you drop external table, ***the backened directory is not deleted***.
 
 # External table
      
