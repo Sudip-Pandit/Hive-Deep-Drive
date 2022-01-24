@@ -141,11 +141,11 @@ This repository contains ***all concepts and commands related to hive***.
   
      It specifys the format of the data file. 
      The default text file is plain, other different types are ORC, PARQUET, RCFILE, AVRO, JSONFILE, SEQUENCEFILE
-
+#
 # How to download the data from AWS S3?
 
      aws s3 presign s3://<bucket_name>/<folder_name>/<file_name>/
-
+#
 # Project-3 (STATIC PARTITION)
 
      * Project explanation- First create a dir pardata, then go to the hive shell and create database partc.
@@ -182,18 +182,18 @@ This repository contains ***all concepts and commands related to hive***.
      Next is select the table from stg and insert into static_part.
      Now you can see the directories /user/cloudera/static_part/ and /user/cloudera/static_part/country=INDIA/*.
 
-  ==> create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
+ * create table static_part(id int,name string,check1 string) partitioned by (country string) row format delimited fields terminated by ',' location  '/user/cloudera/static_part';
 
-  ==> create table stg(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg';
+* create table stg(id int,name string,check1 string,country string) row format delimited fields terminated by ',' location '/user/cloudera/stg';
 
-  ==> load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;
+* load data local inpath '/home/cloudera/partdata/allcountry.csv' into table stg;
 
-     ==> select * from stg;
+     ==> ***select * from stg***;
 
-  ==> insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';
+* insert into static_part partition(country='INDIA') select id,name,check1 from stg where country='IND';
 
-      ==> !hadoop fs -ls /user/cloudera/static_part/;
-      ==> !hadoop fs -cat /user/cloudera/static_part/country=INDIA/*;
+  ***!hadoop fs -ls /user/cloudera/static_part/***;
+  ***!hadoop fs -cat /user/cloudera/static_part/country=INDIA/****;
   
  # Project-5
   
@@ -220,12 +220,12 @@ This repository contains ***all concepts and commands related to hive***.
      by column country. Next is Insert only the India data from stg to the target partiitoned table
      with the partitioned name as INDIA.
   
-  Step1 - syntax to create a partitioned table is 
+* Step1 - syntax to create a partitioned table is 
   
        create table dest_part(id int, name string, check string) partitioned by (country ='India')
        row format delimited fields terminated by ',' loacation '/user/cloudera/dest_part';
      
- Step2 - Syntax is
+* Step2 - Syntax is
  
       Insert into dest_part partition(country = 'India') select id, name, check from stg where country ='INDIA';
       
@@ -236,14 +236,14 @@ This repository contains ***all concepts and commands related to hive***.
        --set hive.support.quoted.identifiers=none;
        --select `(partition_column)?+.+` from <table_name>;)
        
- Step3 - Check the partitoned column using this syntax
+* Step3 - Check the partitoned column using this syntax
  
       !hadoop fs -ls /user/cloudera/dest_part
       (comment: you see the following partitioned column)
 
 ![image](https://user-images.githubusercontent.com/70854976/150693685-5c1cb0ff-bc72-4717-9af4-78cc614a94e9.png)
 
-ste4 - Describe table, it gives the clear information about the partitioned column
+* ste4 - Describe table, it gives the clear information about the partitioned column
 
      desc dest_part;
 
@@ -272,8 +272,8 @@ ste4 - Describe table, it gives the clear information about the partitioned colu
 
 step-1 (make sure the following two things down here)
      
-     I have allcountries.csv in edge node (single file)
-     I also have table partdata in HDFS location.
+   ***I have allcountries.csv in edge node (single file)***
+   ***I also have table partdata in HDFS location***.
     
      ----create a database name dyn_part
      ----use dyn_part
@@ -292,11 +292,11 @@ step-1 (make sure the following two things down here)
      
 step4 - load the data into stagging table
 
-     load data local inpath '/user/cloudera/allcountries.csv into table stg;
+     ***load data local inpath '/user/cloudera/allcountries.csv into table stg***;
      
 step5- country column should be referred to the target table
 
-     --enabled the property:
+   --***enabled the property***:
      
      => set hive.exec.dynamic.partition.mode=nonstrict
 
@@ -306,12 +306,11 @@ step5- country column should be referred to the target table
      we mention to the last portion of the select statement as described above)
      
 ![image](https://user-images.githubusercontent.com/70854976/150695040-e7c8766a-fb23-4b38-b0c1-a96c627e1c3c.png)
-
+#
 # Full code:
 
 ![image](https://user-images.githubusercontent.com/70854976/150695327-647071df-3623-4f01-8589-ff1a2ac911a4.png)
-
-
+#
 # Partition By:
   
 1) This clasue is used to partition the data into multiple files 
