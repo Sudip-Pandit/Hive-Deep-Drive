@@ -2,9 +2,9 @@
 This repository contains ***all concepts and commands related to hive***.
 # Hive Tables
 
-1. First is <span style="color:red">External Tables</span>.
+1. `Managed/Internal table`
 
-2. Second is <span style="color:red">Internal Tables</span>.
+2. `External table`
      
   If you drop managed table ***the backened directory get deleted***.  
   
